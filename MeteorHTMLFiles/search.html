@@ -1,3 +1,4 @@
+<template name="search">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -14,7 +15,7 @@
 </head>
 
 <body>
-    <nav class="navbar navbar-dark navbar-expand-md navigation-clean-search" style="background-color:#EFEBE9;">
+     <nav class="navbar navbar-dark navbar-expand-md navigation-clean-search" style="background-color:#EFEBE9;">
         <div class="container"><a class="navbar-brand" href="index.html" style="color:#00695C;font-size:24px;">Mason Market</a><button class="navbar-toggler" data-toggle="collapse" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
             <div
                 class="collapse navbar-collapse" id="navcol-1">
@@ -42,23 +43,22 @@
                             <div class="row">
                                 <div class="col-md-6" style="width:300px;min-width:auto;max-width:253px;">
                                     <div class="text" style="width:400px;">
-                                        <div class="col-md-6"><label class="col-form-label">Condition:</label>
+                                        <div class="col-md-6"><label>Condition:</label>
                                             <div class="form-check"><input class="form-check-input" type="checkbox" id="formCheck-1"><label class="form-check-label" for="formCheck-1">Excellent</label></div>
                                             <div class="form-check"><input class="form-check-input" type="checkbox" id="formCheck-1"><label class="form-check-label" for="formCheck-1">Good</label></div>
                                             <div class="form-check"><input class="form-check-input" type="checkbox" id="formCheck-1"><label class="form-check-label" for="formCheck-1">Acceptable</label></div>
-                                            <div class="form-check"><input class="form-check-input" type="checkbox" id="formCheck-1"><label class="form-check-label" for="formCheck-1">Worn</label></div><label class="col-form-label" style="margin-top:10px;">Max Price:</label>
-                                            <input
-                                                class="d-print-inline order-1" type="range" name="ranger" value="2500" required="" min="0" max="5000" step="5"><label class="col-form-label sr-only" for="ranger">price</label></div>
+                                            <div class="form-check"><input class="form-check-input" type="checkbox" id="formCheck-1"><label class="form-check-label" for="formCheck-1">Worn</label></div><label style="margin-top:10px;">Max Price:</label><input class="d-print-inline order-1 visible"
+                                                type="range" name="ranger" value="2500" required="" min="0" max="5000" step="5"><label class="sr-only" for="ranger">price</label></div>
                                     </div>
                                 </div>
                                 <div class="col-md-6" style="width:500px;">
-                                    <form class="search-form" style="width:500px;margin-left:0px;padding-right:20px;">
+                                    <form class="search-form" style="width:491px;margin-left:0px;padding-right:0;">
                                         <div class="input-group">
                                             <div class="input-group-prepend"><span class="input-group-text" style="color:rgb(255,255,255);background-color:#008975;"><i class="fa fa-search"></i></span></div><input class="form-control" type="text" placeholder="I am looking for..">
                                             <div
                                                 class="input-group-append"><button class="btn btn-light" type="button" style="background-color:#008975;color:rgb(255,255,255);">Search </button></div>
                                 </div>
-                                </form><label class="col-form-label">A more specific way to search for the books you need.</label></div>
+                                </form><label>A more specific way to search for the books you need.</label></div>
                         </div>
                     </div>
                 </div>
@@ -108,6 +108,6 @@
 
 
 
-<template name="search">
+
 
 </template>

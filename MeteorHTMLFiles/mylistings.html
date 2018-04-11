@@ -1,3 +1,4 @@
+<template name="myaccount">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -14,7 +15,7 @@
 </head>
 
 <body>
-   <nav class="navbar navbar-dark navbar-expand-md navigation-clean-search" style="background-color:#EFEBE9;">
+    <nav class="navbar navbar-dark navbar-expand-md navigation-clean-search" style="background-color:#EFEBE9;">
         <div class="container"><a class="navbar-brand" href="index.html" style="color:#00695C;font-size:24px;">Mason Market</a><button class="navbar-toggler" data-toggle="collapse" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
             <div
                 class="collapse navbar-collapse" id="navcol-1">
@@ -23,16 +24,13 @@
                     <li class="dropdown"><a class="dropdown-toggle nav-link dropdown-toggle" data-toggle="dropdown" aria-expanded="false" href="#" style="color:#008975;">Menu&nbsp;</a>
                         <div class="dropdown-menu" role="menu"><a class="dropdown-item" role="presentation" href="#">About</a><a class="dropdown-item" role="presentation" href="#">GMU</a><a class="dropdown-item" role="presentation" href="#">Help</a></div>
                     </li>
-                    <li class="dropdown"><a class="dropdown-toggle nav-link dropdown-toggle" data-toggle="dropdown" aria-expanded="false" href="#" style="color:#008975;">Menu&nbsp;</a>
-                        <div class="dropdown-menu" role="menu"><a class="dropdown-item" role="presentation" href="#">About</a><a class="dropdown-item" role="presentation" href="#">GMU</a><a class="dropdown-item" role="presentation" href="#">Help</a></div>
-                    </li>
-                </ul><a class="btn btn-light action-button" role="button" href="" style="background-color:#00695C;">Log Out</a>
+                </ul>
                 <form class="form-inline mr-auto" target="_self">
                     <div class="form-group" style="margin-left:10px;"><label for="search-field"><i class="fa fa-search" style="color:#008975;"></i></label><input class="form-control search-field" type="search" name="search" id="search-field" style="color:rgb(80,94,108);"></div>
-                </form>
-        </div>
+                </form><span class="navbar-text"><a href="myaccount.html" class="login" style="color:#00695C;margin-right:5px;">My Account</a></span><a class="btn btn-light action-button" role="button" href="createaccount.html" style="background-color:#00695C;">Log Out</a></div>
         </div>
     </nav>
+    <div class="container" style="height:38px;"><a href="createlisting.html" style="color:#00695C;"><span style="text-decoration: underline;">Click Here To Create Listing!</span></a></div>
     <div></div>
     <div></div>
     <div></div>
@@ -42,7 +40,7 @@
                 <div class="col-md-12">
                     <div>
                         <ul class="nav nav-tabs">
-                            <li class="nav-item"><a class="nav-link active" role="tab" data-toggle="tab" href="#tab-1">All Listings&nbsp;<span class="badge badge-pill badge-primary">42</span></a></li>
+                            <li class="nav-item"><a class="nav-link active" role="tab" data-toggle="tab" href="#tab-1">My Listings&nbsp;<span class="badge badge-pill badge-primary">42</span></a></li>
                         </ul>
                         <div class="tab-content">
                             <div class="tab-pane active" role="tabpanel" id="tab-1">
@@ -115,6 +113,6 @@
 
 
 
-<template name="mylistings">
+
 
 </template>
