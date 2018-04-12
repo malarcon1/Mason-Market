@@ -22,7 +22,7 @@
     </div>
     <div></div>
     <nav class="navbar navbar-dark navbar-expand-md navigation-clean-search" style="background-color:#EFEBE9;">
-        <div class="container"><a class="navbar-brand" href="index.html" style="color:#00695C;font-size:24px;">Mason Market</a><button class="navbar-toggler" data-toggle="collapse" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+        <div class="container"><a class="navbar-brand" href="home" style="color:#00695C;font-size:24px;">Mason Market</a><button class="navbar-toggler" data-toggle="collapse" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
             <div
                 class="collapse navbar-collapse" id="navcol-1">
                 <ul class="nav navbar-nav">
@@ -44,109 +44,38 @@
     </div>
     <div style="margin-bottom:20px;margin-top:20px;">
         <div class="container">
+
+            <div>
+                {{#if isReady}}
+                    <ul>
+                        {{#each books}}
+                            <li>book #{{_id}}</li>
+
+                        {{/each}}
+                    </ul>
+                    {{> defaultBootstrapPaginator pagination=templatePagination limit=12 containerClass="text-center" onClick=clickEvent}}
+                {{else}}
+                    Loading...  //where i left off- working on implementing pagination
+                {{/if}}
+            </div>
+
+
             <div class="row">
-                <div class="col-md-3">
-                    <div class="card"></div>
-                    <div class="card"><img class="img-thumbnail img-fluid card-img-top w-100 d-block" style="height:300px;background-image:url(&quot;assets/img/text3.jpg&quot;);background-size:cover;">
-                        <div class="card-body" style="border-radius:30px;">
-                            <h4 class="card-title">Title</h4>
-                            <p class="card-text">Nullam id dolor id nibh</p><button class="btn btn-primary" type="button" style="background-color:#00BFA5;">Buy Now</button></div>
+                {{#each books}}
+                    <div class="col-md-4" style="margin-bottom:20px;margin-top:20px;">
+                        <div class="card"></div>
+                        <div class="card"><img class="img-thumbnail img-fluid card-img-top w-100 d-block" style="height:300px;background-image:url(&quot;assets/img/text3.jpg&quot;);background-size:cover;">
+                            <div class="card-body" style="border-radius:30px;">
+                                <h4 class="card-title">{{title}}</h4>
+                                <p class="card-text">{{description}}</p><button class="btn btn-primary" type="button" style="background-color:#00BFA5;">Buy Now</button></div>
+                        </div>
                     </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="card"><img class="img-thumbnail card-img-top w-100 d-block" style="background-image:url(&quot;assets/img/text1.jpg&quot;);height:300px;background-size:cover;">
-                        <div class="card-body" style="/*border-radius:30px;*/">
-                            <h4 class="card-title">Book Name</h4>
-                            <p class="card-text">bshlfasdfb</p><button class="btn btn-primary" type="button" style="background-color:#00BFA5;">Buy Now</button></div>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="card"><img class="img-thumbnail card-img-top w-100 d-block" style="height:300px;background-image:url(&quot;assets/img/text4.jpg&quot;);background-size:cover;">
-                        <div class="card-body" style="border-radius:30px;">
-                            <h4 class="card-title">Title</h4>
-                            <p class="card-text">Nullam id dolor id nibh&nbsp;</p><a class="btn btn-primary" role="button" href="listing.html" style="background-color:#00BFA5;">Buy Now</a></div>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="card"><img class="img-thumbnail card-img-top w-100 d-block" style="height:300px;background-image:url(&quot;assets/img/text5.jpg&quot;);background-size:cover;">
-                        <div class="card-body">
-                            <h4 class="card-title">Title</h4>
-                            <p class="card-text">Nullam id dolor id nibh</p><a class="btn btn-primary" role="button" href="listing.html" style="background-color:#00BFA5;color:#ffffff;">Buy Now</a></div>
-                    </div>
-                </div>
+                {{/each}}
             </div>
         </div>
     </div>
-    <div style="margin-bottom:20px;margin-top:20px;">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-3">
-                    <div class="card"></div>
-                    <div class="card"><img class="img-thumbnail img-fluid card-img-top w-100 d-block" style="height:300px;background-image:url(&quot;assets/img/text3.jpg&quot;);background-size:cover;">
-                        <div class="card-body" style="border-radius:30px;">
-                            <h4 class="card-title">Title</h4>
-                            <p class="card-text">Nullam id dolor id nibh</p><button class="btn btn-primary" type="button" style="background-color:#00BFA5;">Buy Now</button></div>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="card"><img class="img-thumbnail card-img-top w-100 d-block" style="background-image:url(&quot;assets/img/text1.jpg&quot;);height:300px;background-size:cover;">
-                        <div class="card-body" style="/*border-radius:30px;*/">
-                            <h4 class="card-title">Book Name</h4>
-                            <p class="card-text">bshlfasdfb</p><button class="btn btn-primary" type="button" style="background-color:#00BFA5;">Buy Now</button></div>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="card"><img class="img-thumbnail card-img-top w-100 d-block" style="height:300px;background-image:url(&quot;assets/img/text4.jpg&quot;);background-size:cover;">
-                        <div class="card-body" style="border-radius:30px;">
-                            <h4 class="card-title">Title</h4>
-                            <p class="card-text">Nullam id dolor id nibh&nbsp;</p><a class="btn btn-primary" role="button" href="listing.html" style="background-color:#00BFA5;">Buy Now</a></div>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="card"><img class="img-thumbnail card-img-top w-100 d-block" style="height:300px;background-image:url(&quot;assets/img/text5.jpg&quot;);background-size:cover;">
-                        <div class="card-body">
-                            <h4 class="card-title">Title</h4>
-                            <p class="card-text">Nullam id dolor id nibh</p><a class="btn btn-primary" role="button" href="listing.html" style="background-color:#00BFA5;color:#ffffff;">Buy Now</a></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div style="margin-bottom:20px;margin-top:20px;">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-3">
-                    <div class="card"></div>
-                    <div class="card"><img class="img-thumbnail img-fluid card-img-top w-100 d-block" style="height:300px;background-image:url(&quot;assets/img/text3.jpg&quot;);background-size:cover;">
-                        <div class="card-body" style="border-radius:30px;">
-                            <h4 class="card-title">Title</h4>
-                            <p class="card-text">Nullam id dolor id nibh</p><button class="btn btn-primary" type="button" style="background-color:#00BFA5;">Buy Now</button></div>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="card"><img class="img-thumbnail card-img-top w-100 d-block" style="background-image:url(&quot;assets/img/text1.jpg&quot;);height:300px;background-size:cover;">
-                        <div class="card-body" style="/*border-radius:30px;*/">
-                            <h4 class="card-title">Book Name</h4>
-                            <p class="card-text">bshlfasdfb</p><button class="btn btn-primary" type="button" style="background-color:#00BFA5;">Buy Now</button></div>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="card"><img class="img-thumbnail card-img-top w-100 d-block" style="height:300px;background-image:url(&quot;assets/img/text4.jpg&quot;);background-size:cover;">
-                        <div class="card-body" style="border-radius:30px;">
-                            <h4 class="card-title">Title</h4>
-                            <p class="card-text">Nullam id dolor id nibh&nbsp;</p><a class="btn btn-primary" role="button" href="listing.html" style="background-color:#00BFA5;">Buy Now</a></div>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="card"><img class="img-thumbnail card-img-top w-100 d-block" style="height:300px;background-image:url(&quot;assets/img/text5.jpg&quot;);background-size:cover;">
-                        <div class="card-body">
-                            <h4 class="card-title">Title</h4>
-                            <p class="card-text">Nullam id dolor id nibh</p><a class="btn btn-primary" role="button" href="listing.html" style="background-color:#00BFA5;color:#ffffff;">Buy Now</a></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+
+
     <div class="container">
         <nav class="d-inline-flex">
             <ul class="pagination">
