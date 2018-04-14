@@ -33,12 +33,12 @@ Template.createlisting.events({
 	
 	'submit form': function(event){
 		event.preventDefault();
-		var title = $('[name==listname]').val();
-		var price = $('[name==price]').val();
-		var condition = $('[name==condition]').val();
-		var course = $('[name==course]').val();
-		var imagesrc = $('[name==pic]').val();
-		var description = $('[name==description]').val();
+		var title = $('[name=listname]').val();
+		var price = $('[name=price]').val();
+		var condition = $('[name=condition]').val();
+		var course = $('[name=course]').val();
+		var imagesrc = $('[name=pic]').val();
+		var description = $('[name=description]').val();
 		var owner = Meteor.user();
 		var createdAt = new Date();
 		
