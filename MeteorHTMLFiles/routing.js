@@ -16,7 +16,13 @@ Router.route('/listing', function () {
 });
 
 Router.route('/createlisting', function () {
-  this.render('createlisting');
+  if (Meteor.userId() && this.ready())
+  {
+	this.render('createlisting');
+  }
+  else
+	  Router.go('home');
+  
 });
 
 Router.route('/myaccount', function () {
