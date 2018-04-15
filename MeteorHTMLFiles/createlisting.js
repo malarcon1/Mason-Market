@@ -17,7 +17,8 @@ Template.createlisting.onCreated(function onCreated(){
 Template.createlisting.helpers({
   firstName: function() {
     return Meteor.user().emails[0].address;
-  }
+  }			
+ 
 });
 
 		
@@ -35,18 +36,40 @@ Template.createlisting.events({
 		event.preventDefault();
 		var title = $('[name=listname]').val();
 		var price = $('[name=price]').val();
-		var condition = $('[name=condition]').val();
+		var condition = $('.form-check-input:checked').val();
 		var course = $('[name=course]').val();
 		var imagesrc = $('[name=pic]').val();
 		var description = $('[name=description]').val();
 		var owner = Meteor.user();
 		var createdAt = new Date();
 		
+		if (price < 0 || price > 5000)
+		{
+				alert("Price out of range! Please give valid price from 0 to 5000");
+				return;
+		}
+	
+		if (condition == undefined)
+		{
+				alert("Please choose a condition for the book!");
+				return;
+		}
+		
+		else
+		{
+		
+			console.log("User created listing");
 				
-		let listing = new BookContract(title, price, description, imagesrc, owner, condition, course);
+			let listing = new BookContract(title, price, description, imagesrc, owner, condition, course);
 		
 		//insert into book collection
-		Books.insert(listing);
+			Books.insert(listing);
+		
+			console.log(listing);
+		
+			Router.go('home');
+			
+		}
 	}
 	
 });
