@@ -3,6 +3,13 @@ import './login.html';
 import { Books } from '../lib/collections.js';
 import {BookContract} from "../contracts/book_contract.js";
 
+Template.home.onCreated(function() {
+    var currentPage = parseInt(Router.current().params.page) || 1;
+    var skipCount = (currentPage - 1) * 9; // 3 records per page
+
+    this.subscribe('books', skipCount);
+});
+
 Template.home.helpers({
     firstName: function () {
         return Meteor.user().emails[0].address;
@@ -20,26 +27,31 @@ Template.home.helpers({
         // Books.insert(myBook);
         return Books.find();
     },
-
-    isReady: function () {
-        return Template.instance().pagination.ready();
+    prevPage: function() {
+        var previousPage = currentPage() === 1 ? 1 : currentPage() - 1;
+        return Router.routes.home.path({page: previousPage});
     },
-    templatePagination: function () {
-        return Template.instance().pagination;
+    nextPage: function() {
+        var nextPage = hasMorePages() ? currentPage() + 1 : currentPage();
+        return Router.routes.home.path({page: nextPage});
     },
-    documents: function () {
-        return Template.instance().pagination.getPage();
+    prevPageClass: function() {
+        return currentPage() <= 1 ? "disabled" : "";
     },
-    // optional helper used to return a callback that should be executed before changing the page
-    clickEvent: function() {
-        return function(e, templateInstance, clickedPage) {
-            e.preventDefault();
-            console.log('Changing page from ', templateInstance.data.pagination.currentPage(), ' to ', clickedPage);
-        };
+    nextPageClass: function() {
+        return hasMorePages() ? "" : "disabled";
     }
-
-
 });
+
+var hasMorePages = function() {
+    var totalBooks = Counts.get('bookCount');
+    return currentPage() * 9 < totalBooks;
+}
+
+var currentPage = function() {
+    return parseInt(Router.current().params.page) || 1;
+}
+
 
 Template.home.events({
     'click .logout': function (event) {
@@ -49,10 +61,5 @@ Template.home.events({
     }
 });
 
-Template.home.onCreated(function () {
-    this.pagination = new Meteor.Pagination(Books, {
-        sort: {
-            _id: -1
-        }
-    });
-});
+
+

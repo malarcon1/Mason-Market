@@ -33,7 +33,23 @@
                 </ul>
                 <form class="form-inline mr-auto" target="_self">
                     <div class="form-group" style="margin-left:10px;"><label for="search-field"><i class="fa fa-search" style="color:#008975;"></i></label><input class="form-control search-field" type="search" name="search" id="search-field" style="color:rgb(80,94,108);"></div>
-                </form><span class="navbar-text"><a href="login.html" class="login" style="color:#00695C;margin-right:5px;">Log In</a></span><a class="btn btn-light action-button" role="button" href="createaccount.html" style="background-color:#00695C;">Sign Up</a></div>
+                </form>
+                {{#if currentUser}}
+                    <span class="navbar-text"><a href="login.html" class="login" style="color:#00695C;">        {{firstName}}</a>
+                            </span>
+
+                    <a class="btn btn-light action-button logout" role="button" href="login" style="background-color:#00695C;"> Log Out
+                    </a>
+                {{else}}
+                    <span class="navbar-text">
+                            <a href="login.html" class="login" style="color:#00695C;">
+                                Log In
+                            </a>
+                            </span>
+                    <a class="btn btn-light action-button" role="button" href="createaccount" style="background-color:#00695C;"> Sign Up
+                    </a>
+                {{/if}}
+            </div>
         </div>
     </nav>
     <div class="container">
@@ -44,21 +60,6 @@
     </div>
     <div style="margin-bottom:20px;margin-top:20px;">
         <div class="container">
-
-            <div>
-                {{#if isReady}}
-                    <ul>
-                        {{#each books}}
-                            <li>book #{{_id}}</li>
-
-                        {{/each}}
-                    </ul>
-                    {{> defaultBootstrapPaginator pagination=templatePagination limit=12 containerClass="text-center" onClick=clickEvent}}
-                {{else}}
-                    Loading...  //where i left off- working on implementing pagination
-                {{/if}}
-            </div>
-
 
             <div class="row">
                 {{#each books}}
@@ -77,15 +78,19 @@
 
 
     <div class="container">
-        <nav class="d-inline-flex">
-            <ul class="pagination">
-                <li class="page-item"><a class="page-link" aria-label="Previous"><span aria-hidden="true">«</span></a></li>
-                <li class="page-item"><a class="page-link">1</a></li>
-                <li class="page-item"><a class="page-link">2</a></li>
-                <li class="page-item"><a class="page-link">3</a></li>
-                <li class="page-item"><a class="page-link">4</a></li>
-                <li class="page-item"><a class="page-link">5</a></li>
-                <li class="page-item"><a class="page-link" aria-label="Next"><span aria-hidden="true">»</span></a></li>
+
+        <nav>
+            <ul class="pager">
+                <li class="{{prevPageClass}}">
+                    <a id="prevPage" href="{{prevPage}}">
+                        <span aria-hidden="true">&larr;</span> Previous
+                    </a>
+                </li>
+                <li class="{{nextPageClass}}">
+                    <a id="nextPage" href="{{nextPage}}">
+                        Next <span aria-hidden="true">&rarr;</span>
+                    </a>
+                </li>
             </ul>
         </nav>
     </div>
@@ -123,10 +128,9 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/js/bootstrap.bundle.min.js"></script>
     <script src="assets/js/script.min.js"></script>
+
+
 </body>
-
-
-
 
 
 </template>

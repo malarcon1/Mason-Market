@@ -1,9 +1,22 @@
 import { Meteor } from 'meteor/meteor';
-import { publishPagination } from 'meteor/kurounin:pagination';
 import {Books} from "../lib/collections";
 
-publishPagination(Books);
+Meteor.publish('books', function(skipCount) {
+   // var positiveIntegerCheck = Match.Where(function(x) {
+     //   check(x, Match.Integer);
+       // return x >= 0;
+    //});
+    //check(skipCount); //, positiveIntegerCheck);
 
-Meteor.publish('Books', function publishBooks(){
-  return Books.find();
+    Counts.publish(this, 'bookCount', Books.find(), {
+        noReady: true
+    });
+
+    return Books.find({}, {
+        limit: 9,
+        skip: skipCount
+    });
 });
+//Meteor.publish(Books, function publishBooks(){
+  //return Books.find();
+//});

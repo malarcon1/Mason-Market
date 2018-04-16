@@ -1,6 +1,6 @@
-Router.route('/', function () {
-  this.redirect('/login');
-});
+//Router.route('/', function () {
+  //this.redirect('/login');
+//});
 
         
 Router.route('/createaccount', function () {
@@ -32,11 +32,21 @@ Router.route('/myaccount', function () {
 Router.route('/search', function () {
   this.render('search');
 });
-
+/*
 Router.route('/home', function () {
   this.render('home');
+});*/
+
+Router.route('/', function () {
+    this.render('home');
 });
 
+
+Router.route('/:page?', {
+    name: 'home',
+    path: '/:page?',
+
+});
 
 /* Routing.configure({
 	layoutTemplate:'login'
